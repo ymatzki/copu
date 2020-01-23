@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "Copy page url",
-  "version": "1.0",
+  "version": "2.0",
   "description": "Copy page link to clipboard.",
 
   "background":{
@@ -23,6 +23,7 @@
 
   "permissions": [
     "contextMenus",
-    "activeTab"
+    "activeTab",
+    "clipboardWrite"
   ]
 }

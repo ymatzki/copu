@@ -1,40 +1,49 @@
-browser.contextMenus.create({
+chrome.contextMenus.create({
     id: "markdown",
     title: "Markdown",
     contexts: ["all"]
 });
 
-browser.contextMenus.create({
+chrome.contextMenus.create({
     id: "confluence-wiki",
     title: "Confluence wiki",
     contexts: ["all"]
 });
 
-browser.contextMenus.create({
+chrome.contextMenus.create({
     id: "title-url",
     title: "Title and URL",
     contexts: ["all"]
 });
 
-browser.contextMenus.create({
+chrome.contextMenus.create({
     id: "url",
     title: "Only URL",
     contexts: ["all"]
 });
 
-browser.contextMenus.onClicked.addListener((info, tab) => {
+chrome.contextMenus.onClicked.addListener(function (info, tab) {
     switch (info.menuItemId) {
         case "markdown":
-            navigator.clipboard.writeText(`[${tab.title}](${tab.url})`);
+            copy(`[${tab.title}](${tab.url})`);
             break;
         case "confluence-wiki":
-            navigator.clipboard.writeText(`[${tab.title}|${tab.url}]`);
+            copy(`[${tab.title}|${tab.url}]`);
             break;
         case "title-url":
-            navigator.clipboard.writeText(`${tab.title} - ${tab.url}`);
+            copy(`${tab.title} - ${tab.url}`);
             break;
         case "url":
-            navigator.clipboard.writeText(`${tab.url}`);
+            copy(`${tab.url}`);
             break;
     }
 });
+
+function copy(text) {
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    document.body.appendChild(ta);
+    ta.select();
+    document.execCommand('copy');
+    ta.remove();
+}

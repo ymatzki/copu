@@ -3,15 +3,14 @@
   "name": "Copy page url",
   "version": "2.0",
   "description": "Copy page link to clipboard.",
-
-  "background":{
-    "scripts": ["background.js"]
+  "background": {
+    "scripts": [
+      "background.js"
+    ]
   },
-
   "icons": {
     "48": "icons/copu-48.png"
   },
-
   "browser_action": {
     "default_icon": {
       "16": "icons/copu-16.png",
@@ -20,7 +19,6 @@
       "64": "icons/copu-64.png"
     }
   },
-
   "permissions": [
     "contextMenus",
     "activeTab",

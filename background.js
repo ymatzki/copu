@@ -39,9 +39,9 @@ chrome.contextMenus.onClicked.addListener(function (info, tab) {
     }
 });
 
-function copy(text) {
+function copy(str) {
     const ta = document.createElement('textarea');
-    ta.value = text;
+    ta.value = str;
     document.body.appendChild(ta);
     ta.select();
     document.execCommand('copy');
